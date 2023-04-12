@@ -23,6 +23,15 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-source-drupal',
+      options: {
+        baseUrl: 'https://dev-drupal10-headless.pantheonsite.io',
+        apiBase: 'jsonapi',
+      },
+    },
+    
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
