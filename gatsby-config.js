@@ -1,3 +1,9 @@
+require("dotenv").config({
+  path: `.env.${process.env.GATSBY_BUILD_ENV || 'dev'}`,
+})
+
+console.log('ENV vars');
+Object.keys(process.env).filter( k => k.match(/^GATSBY_/)).map( k => console.log(k,': ', process.env[k]) );
 /**
  * Configure your Gatsby site with this file.
  *
@@ -26,7 +32,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-drupal',
       options: {
-        baseUrl: 'https://dev-drupal10-headless.pantheonsite.io',
+        baseUrl: process.env.GATSBY_DRUPAL_URL,
         apiBase: 'jsonapi',
       },
     },
