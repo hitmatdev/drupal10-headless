@@ -34,6 +34,9 @@ module.exports = {
       options: {
         baseUrl: process.env.GATSBY_DRUPAL_URL,
         apiBase: 'jsonapi',
+        headers: {
+          'api-key': process.env.JSON_API_KEY
+      },
        
       },
     },
