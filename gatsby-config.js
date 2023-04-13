@@ -3,7 +3,7 @@ require("dotenv").config({
 })
 
 console.log('ENV vars');
-Object.keys(process.env).filter( k => k.match(/^GATSBY_/)).map( k => console.log(k,': ', process.env[k]) );
+Object.keys(process.env).map( k => console.log(k,': ', process.env[k]) );
 /**
  * Configure your Gatsby site with this file.
  *
