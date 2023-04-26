@@ -4,117 +4,136 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+import ik from "../components/imagekit"
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
-
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+const imageUrl = ik.url({
+  path: "home.png"
+});
 
 const IndexPage = () => (
   <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
+ 
+
+ <div class="container  ">
+   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+      <img src={imageUrl}  alt="Home" class="d-block mx-lg-auto img-fluid"  loading="lazy" />
+    
+      </div>
+      <div class="col-lg-6">
+         <h1 class="display-5 fw-bold lh-1 mb-3">Transforming Lives with Innovation, Science, Technology, Empathy and Care :)</h1>
+         <p class="lead">We are a highly committed global biopharmaceutical company. Our goal is to advance new therapies for patients with rare orphan diseases</p>
+         <div class="d-grid gap-2 d-md-flex justify-content-md-start"><a href="../about-us" class="btn btn-outline-primary btn-lg px-4">About Dunder Mifflin Pharma </a></div>
+      </div>
+   </div>
+   <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+         <div class="h-100 p-5 bg-light border-0 rounded-3">
+            <h2>Driven by Science, Innovation and Dedication</h2>
+            <p>Our core strength lies in our ability to excel in developing generics and technologically complex products backed by our dedicated teams in formulations, process chemistry, and analytical development.
+               Our capabilities extend beyond the development of differentiated products, including liposomal products, inhalers, lyophilized injections, nasal sprays, and controlled release dosage forms.
+            </p>
+            <button class="btn btn-outline-primary" type="button">Know More</button>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="h-100 p-5 bg-light border-0 rounded-3">
+            <h2>Our global footprints in patient care and pharma</h2>
+            <p>Our core strength lies in our ability to excel in developing generics and technologically complex products backed by our dedicated teams in formulations, process chemistry, and analytical development.
+               Our capabilities extend beyond the development of differentiated products, including liposomal products, inhalers, lyophilized injections, nasal sprays, and controlled release dosage forms.
+            </p>
+            <button class="btn btn-outline-primary" type="button">Know More</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="container">
+  
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+     
+      <div class="col-lg-6">
+         <h1 class="display-5 fw-bold lh-1 mb-3">Transforming Lives with Innovation, Science, Technology, Empathy and Care :)</h1>
+         <p class="lead">We are a highly committed global biopharmaceutical company. Our goal is to advance new therapies for patients with rare orphan diseases</p>
+         <div class="d-grid gap-2 d-md-flex justify-content-md-start"><a href="../about-us" class="btn btn-outline-primary btn-lg px-4">About Dunder Mifflin Pharma </a></div>
+      </div>
+
+      <div class="col-10 col-sm-8 col-lg-6">
+      <StaticImage src="../images/home.png" alt="Home" class="d-block mx-lg-auto img-fluid"   loading="lazy" />
+      </div>
+   </div>
+
+   <div class="row align-items-md-stretch">
+      <div class="col-md-12">
+         <div class="h-100 p-5 bg-light border-0 rounded-3">
+         
+         <blockquote class="blockquote text-center">
+  <p class="mb-0 lead">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
+  <footer class="blockquote-footer pt-4">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+
+         </div>
+      </div>
+   
+   </div>
+
+</div>
+
+
+<div class="container">
+
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+           
+
+            
+            <div class="col-md-6">
+              <div class="card mb-4 box-shadow border-0">
+              <StaticImage src="../images/innovation1.png" alt="Home" class="d-block mx-lg-auto img-fluid"   loading="lazy"  data-holder-rendered="true" />
+                <div class="card-body">
+                <h2 class="card-title">Primary card title</h2>
+
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">More Details</button>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="col-md-6">
+              <div class="card mb-4 box-shadow border-0">
+              <StaticImage src="../images/innovation4.png" alt="Home" class="d-block mx-lg-auto img-fluid"   data-holder-rendered="true"  loading="lazy" />
+                <div class="card-body">
+                <h2 class="card-title">Primary card title</h2>
+
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary">More Details</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+         
+          
+        
+          
+
+          
+            
+          
+          </div>
+        </div>
+
   </Layout>
 )
 
