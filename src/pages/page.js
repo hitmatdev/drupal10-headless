@@ -7,27 +7,17 @@ import ik from "../components/imagekit"
 
 export const query = graphql`
 {
-  allNodePage(
-    filter: {field_page_name: {eq: "page1"}, relationships: {node_type: {}}}
-  ) {
-    edges {
-      node {
-        id
-        title
-        field_page_name
-        body {
-          value
-        }
-        relationships {
-          field_para_example {
-            ... on paragraph__cta_one {
-              id
-              field_cta_one_name
-              field_cta_one_bio
-            }
-            ... on paragraph__quote {
-              id
-              field_para_quote
+  allNodeBasicPage(filter: {field_page_id: {eq: "solution"}}) {
+    nodes {
+      field_hero_title
+      field_hero_description
+      field_page_id
+      relationships {
+        field_sections {
+          ... on paragraph__rich_text {
+            id
+            field_text {
+              value
             }
           }
         }
@@ -38,7 +28,7 @@ export const query = graphql`
 `
 
 const DrupalPage = ({ data }) => {
-  const pages = data.allNodePage.edges
+  const pages = data.allNodeBasicPage.nodes
 
   return (
    
@@ -46,19 +36,24 @@ const DrupalPage = ({ data }) => {
    
    <div class="container">
       {pages.map((page) => (
-        <div key={page.node.title}>
-          <h2>{page.node.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: page.node.body.value }} />
+       <div>
+         
+         <h1>{page.field_hero_title}</h1>
+         <p>{page.field_hero_description}</p>
 
-          <div>
-         <h1>Relationships</h1>
+         <hr></hr>
+         <div>
+          <h3>Para 1</h3>
+         <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[0].field_text.value }} />
+         <h3>Para 2</h3>
 
-         <p>{page.node.relationships.field_para_example[0].field_cta_one_name}</p>
-         <p class="text-small">{page.node.relationships.field_para_example[0].field_cta_one_bio}</p>
-         <p class="text-info">{page.node.relationships.field_para_example[1].field_para_quote}</p>
-        
+         <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[1].field_text.value }} />
 
-          </div>
+         <h3>Para 3</h3>
+
+        <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[4].field_text.value }} />
+         </div>
+
         </div>
       ))}
     </div>

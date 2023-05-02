@@ -1,9 +1,10 @@
 require("dotenv").config({
   path: `.env.${process.env.GATSBY_BUILD_ENV || 'dev'}`,
 })
-
+/*
 console.log('ENV vars');
 Object.keys(process.env).map( k => console.log(k,': ', process.env[k]) );
+*/
 /**
  * Configure your Gatsby site with this file.
  *
