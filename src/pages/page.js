@@ -8,16 +8,28 @@ import ik from "../components/imagekit"
 export const query = graphql`
 {
   allNodeBasicPage(filter: {field_page_id: {eq: "solution"}}) {
-    nodes {
-      field_hero_title
-      field_hero_description
-      field_page_id
-      relationships {
-        field_sections {
-          ... on paragraph__rich_text {
-            id
-            field_text {
-              value
+    edges {
+      node {
+        id
+        body {
+          value
+        }
+        field_page_id
+        field_hero_title
+        field_hero_description
+        relationships {
+          field_sections {
+            ... on paragraph__card_content {
+              id
+              field_title
+              field_description
+            }
+            ... on paragraph__cta_2_column {
+              id
+              field_title
+            }
+            ... on paragraph__cta_3_column {
+              id
             }
           }
         }
@@ -28,32 +40,28 @@ export const query = graphql`
 `
 
 const DrupalPage = ({ data }) => {
-  const pages = data.allNodeBasicPage.nodes
-
+  const edges = data.allNodeBasicPage.edges
+console.log("edges",edges);
   return (
    
    <Layout>
    
-   <div class="container">
-      {pages.map((page) => (
-       <div>
-         
-         <h1>{page.field_hero_title}</h1>
-         <p>{page.field_hero_description}</p>
+   <div className="container">
+      {edges.map((page) => (
+        <div key={page.node.id}>
 
-         <hr></hr>
-         <div>
-          <h3>Para 1</h3>
-         <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[0].field_text.value }} />
-         <h3>Para 2</h3>
+          <h2 className="text-uppercase text-info">{page.node.field_hero_title}</h2>
+          <p>{page.node.field_hero_description}</p>
+           
+           <hr></hr>
 
-         <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[1].field_text.value }} />
+           <p>{page.node.relationships.field_sections[2].field_title}</p>
+           <p>{page.node.relationships.field_sections[3].field_title}</p>
 
-         <h3>Para 3</h3>
 
-        <div dangerouslySetInnerHTML={{ __html: page.relationships.field_sections[4].field_text.value }} />
-         </div>
+          <div>
 
+          </div>
         </div>
       ))}
     </div>
